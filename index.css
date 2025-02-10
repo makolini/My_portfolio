@@ -703,3 +703,41 @@ body:not(.user-is-tabbing) a:focus {
     padding-bottom: 0;
   }
 }
+
+/* --------------------------------------- */
+/* ----- Table of Contents ----- */
+/* --------------------------------------- */
+
+.toc__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.toc__item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.toc__item:hover {
+    transform: translateY(-5px);
+}
+
+.toc__item h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.toc__item p {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: var(--pink);
+}
+
+@media(max-width: 500px) {
+    .toc__grid {
+        grid-template-columns: 1fr;
+    }
+}
