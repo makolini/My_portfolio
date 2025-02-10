@@ -708,36 +708,66 @@ body:not(.user-is-tabbing) a:focus {
 /* ----- Table of Contents ----- */
 /* --------------------------------------- */
 
-.toc__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+.toc {
+    padding: var(--gutter-medium) 0;
 }
 
-.toc__item {
+.toc__scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 2rem 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.toc__scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.toc__card {
+    flex: 0 0 300px;
     background: rgba(255, 255, 255, 0.05);
     padding: 2rem;
     border-radius: 8px;
     transition: transform 0.3s;
+    scroll-snap-align: start;
 }
 
-.toc__item:hover {
+.toc__card:hover {
     transform: translateY(-5px);
 }
 
-.toc__item h3 {
-    font-size: 2.2rem;
+.toc__image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.toc__card h3 {
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.toc__item p {
-    font-size: 1.6rem;
+.toc__card p {
+    font-size: 1.4rem;
     margin-bottom: 2rem;
-    color: var(--pink);
+    color: var(--white-1);
 }
 
+/* Add smooth scrolling for the cards */
+@media (hover: hover) {
+    .toc__scroll {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Adjust card width for smaller screens */
 @media(max-width: 500px) {
-    .toc__grid {
-        grid-template-columns: 1fr;
+    .toc__card {
+        flex: 0 0 250px;
     }
 }
